@@ -25,8 +25,8 @@ class FindController extends Controller
         $date       = date("Y-m-d");
         $time       = date("H:i:s");        
         if ($request->tgl == $date ){
-        $date       = date("Y-m-d");
-    echo
+       //$date       = date("Y-m-d");
+    echo $date;
 
         $validator = Validator::make($request->all(), [
             'tgl' => "required|date_format:Y-m-d",
