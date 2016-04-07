@@ -188,6 +188,7 @@ padding-right: 15px;
                                      <div class="col-md-2">
                               <label for="ex1">Jam Mulai Bermain</label>
                                 <select name="start" class="form-control">
+                                <option disabled selected>Waktu Mulai</option>
                                 <option value="05:00:00">05:00</option>
                                 <option value="06:00:00">06:00</option>
                                 <option value="07:00:00">07:00</option>
@@ -213,7 +214,7 @@ padding-right: 15px;
                             <div class="col-md-2">
                               <label for="ex1">Jam Selesai Bermain</label>
                               <select name="end" class="form-control">
-                              
+                                <option disabled selected>Waktu Selesai</option>
                                 <option value="06:00:00">06:00</option>
                                 <option value="07:00:00">07:00</option>
                                 <option value="08:00:00">08:00</option>
