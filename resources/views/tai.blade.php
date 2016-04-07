@@ -28,7 +28,7 @@ padding-right: 15px;
 
     <!-- Custom CSS -->
     {{ Html::style('css/bootstrap.min.css') }}
-            {{ Html::style('datepicker/css/datepicker.css') }}
+            {{ Html::style('css/bootstrap-datepicker.css') }}
             {{ Html::style('css/modern-business.css') }}
     
 
@@ -73,12 +73,13 @@ padding-right: 15px;
                                 <a href="profil">Profil</a>
                             </li>
                             <li>
-                                <a href="upload">Manage Fasor/a>
+                                <a href="upload">Manage Fasor</a>
                             </li>
-
                         </ul>
                     </li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
 
                     @endif
                     <li>
@@ -178,19 +179,69 @@ padding-right: 15px;
                             </div> 
                             <div class="col-md-2">
                                 <label for="ex1">Tanggal</label>
-                                {{ Form::text('tgl', null, ['class' => 'form-control','id' => 'dp1']) }}
+
+                          <div class="input-group date" id="tai">
+  <input type="text" class="form-control" name="tgl" ><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
                             </div>
-                            <div class="col-md-2">
+                            
+                                     <div class="col-md-2">
                               <label for="ex1">Jam Mulai Bermain</label>
-                               <input type="text" class="time start" />
+                                <select name="start" class="form-control">
+                                <option value="05:00:00">05:00</option>
+                                <option value="06:00:00">06:00</option>
+                                <option value="07:00:00">07:00</option>
+                                <option value="08:00:00">08:00</option>
+                                <option value="09:00:00">09:00</option>
+                                <option value="10:00:00">10:00</option>
+                                <option value="11:00:00">11:00</option>
+                                <option value="12:00:00">12:00</option>
+                                <option value="13:00:00">13:00</option>
+                                <option value="14:00:00">14:00</option>
+                                <option value="15:00:00">15:00</option>
+                                <option value="16:00:00">16:00</option>
+                                <option value="17:00:00">17:00</option>
+                                <option value="18:00:00">18:00</option>
+                                <option value="19:00:00">19:00</option>
+                                <option value="20:00:00">20:00</option>
+                                <option value="21:00:00">21:00</option>
+                                <option value="22:00:00">22:00</option>
+                                <option value="23:00:00">23:00</option>
+                    
+                              </select>
                             </div>
                             <div class="col-md-2">
                               <label for="ex1">Jam Selesai Bermain</label>
-                               <input type="text" class="time end" />
-                            </div>                            
+                              <select name="end" class="form-control">
+                              
+                                <option value="06:00:00">06:00</option>
+                                <option value="07:00:00">07:00</option>
+                                <option value="08:00:00">08:00</option>
+                                <option value="09:00:00">09:00</option>
+                                <option value="10:00:00">10:00</option>
+                                <option value="11:00:00">11:00</option>
+                                <option value="12:00:00">12:00</option>
+                                <option value="13:00:00">13:00</option>
+                                <option value="14:00:00">14:00</option>
+                                <option value="15:00:00">15:00</option>
+                                <option value="16:00:00">16:00</option>
+                                <option value="17:00:00">17:00</option>
+                                <option value="18:00:00">18:00</option>
+                                <option value="19:00:00">19:00</option>
+                                <option value="20:00:00">20:00</option>
+                                <option value="21:00:00">21:00</option>
+                                <option value="22:00:00">22:00</option>
+                                <option value="23:00:00">23:00</option>
+                                <option value="24:00:00">24:00</option>
+                                 
+
+
+
+                              </select>
+                            </div>                     
                             <div class="col-md-2">
                               <label for="ex1">Jenis Lapangan</label>
-                          
+                          
                               {{ Form::select('lapangan', $items, null, ['class' => 'form-control']) }}
                               
                         </div>
@@ -246,7 +297,7 @@ padding-right: 15px;
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="booklapangan.cjs/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -258,175 +309,38 @@ padding-right: 15px;
     })
     </script>
 
+   <script src="js/google-code-prettify/prettify.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
 
-<script src="booklapangan.com/datepicker/js/bootstrap-datepicker.js"></script>
-
-   <script>
-var monster = {
-  set: function(name, value, days, path, secure) {
-    var date = new Date(),
-      expires = '',
-      type = typeof(value),
-      valueToUse = '',
-      secureFlag = '';
-    path = path || "/";
-    if (days) {
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = "; expires=" + date.toUTCString();
-    }
-    if (type === "object" && type !== "undefined") {
-      if (!("JSON" in window)) throw "Bummer, your browser doesn't support JSON parsing.";
-      valueToUse = encodeURIComponent(JSON.stringify({
-        v: value
-      }));
-    }
-    else {
-      valueToUse = encodeURIComponent(value);
-    }
-    if (secure) {
-      secureFlag = "; secure";
-    }
-    document.cookie = name + "=" + valueToUse + expires + "; path=" + path + secureFlag;
-  },
-  get: function(name) {
-    var nameEQ = name + "=",
-      ca = document.cookie.split(';'),
-      value = '',
-      firstChar = '',
-      parsed = {};
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) === 0) {
-        value = decodeURIComponent(c.substring(nameEQ.length, c.length));
-        firstChar = value.substring(0, 1);
-        if (firstChar == "{") {
-          try {
-            parsed = JSON.parse(value);
-            if ("v" in parsed) return parsed.v;
-          }
-          catch (e) {
-            return value;
-          }
-        }
-        if (value == "undefined") return undefined;
-        return value;
-      }
-    }
-    return null;
-  }
-};
-if (!monster.get('cookieConsent')) {
-  var cookieConsentAct = function() {
-      document.getElementById('cookieConsent').style.display = 'none';
-      monster.set('cookieConsent', 1, 360, '/');
-    };
-  document.getElementById('cookieConsent').style.display = 'block';
-  var cookieConsentEl = document.getElementById('cookieConsentAgree');
-  if (cookieConsentEl.addEventListener) {
-    cookieConsentEl.addEventListener('click', cookieConsentAct, false);
-  }
-  else if (cookieConsentEl.attachEvent) {
-    cookieConsentEl.attachEvent("onclick", cookieConsentAct);
-  }
-  else {
-    cookieConsentEl["onclick"] = cookieConsentAct;
-  }
-}
-</script>
-    <script src="booklapangan.com/js/google-code-prettify/prettify.js"></script>
-    <script src="booklapangan.com/js/jquery.js"></script>
-    <script src="booklapangan.com/js/bootstrap-datepicker.js"></script>
-  <script>
-  if (top.location != location) {
-    top.location.href = document.location.href ;
-  }
-    $(function(){
-      window.prettyPrint && prettyPrint();
-      $('#dp1').datepicker({
-        format: 'yyyy-mm-dd'
-      });
-      $('#dp2').datepicker();
-      $('#dp3').datepicker();
-      $('#dp3').datepicker();
-      $('#dpYears').datepicker();
-      $('#dpMonths').datepicker();
-      
-      
-      var startDate = new Date(2012,1,20);
-      var endDate = new Date(2012,1,25);
-      $('#dp4').datepicker()
-        .on('changeDate', function(ev){
-          if (ev.date.valueOf() > endDate.valueOf()){
-            $('#alert').show().find('strong').text('The start date can not be greater then the end date');
-          } else {
-            $('#alert').hide();
-            startDate = new Date(ev.date);
-            $('#startDate').text($('#dp4').data('date'));
-          }
-          $('#dp4').datepicker('hide');
-        });
-      $('#dp5').datepicker()
-        .on('changeDate', function(ev){
-          if (ev.date.valueOf() < startDate.valueOf()){
-            $('#alert').show().find('strong').text('The end date can not be less then the start date');
-          } else {
-            $('#alert').hide();
-            endDate = new Date(ev.date);
-            $('#endDate').text($('#dp5').data('date'));
-          }
-          $('#dp5').datepicker('hide');
-        });
-
-        // disabling dates
-        var nowTemp = new Date();
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-        var checkin = $('#dpd1').datepicker({
-          onRender: function(date) {
-            return date.valueOf() < now.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          if (ev.date.valueOf() > checkout.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            checkout.setValue(newDate);
-          }
-          checkin.hide();
-          $('#dpd2')[0].focus();
-        }).data('datepicker');
-        var checkout = $('#dpd2').datepicker({
-          onRender: function(date) {
-            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          checkout.hide();
-        }).data('datepicker');
-    });
-  </script>
-  <script type="booklapangan.com/text/javascript" src="datepair.js"></script>
-<script type="booklapangan.com/text/javascript" src="jquery.datepair.js"></script>
 <script>
-    // initialize input widgets first
-    $('#datepairExample .time').timepicker({
-        'showDuration': true,
-        'timeFormat': 'g:ia'
-    });
+$('#timeOnlyExample .time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'g:ia'
+});
 
-    $('#datepairExample .date').datepicker({
-        'format': 'yyyy-m-d',
-        'autoclose': true
-    });
+var timeOnlyExampleEl = document.getElementById('timeOnlyExample');
+var timeOnlyDatepair = new Datepair(timeOnlyExampleEl);
 
-    // initialize datepair
-    $('#datepairExample').datepair();
 </script>
+
+  <script>
+$(function(){
+    $('#tai').datepicker({
+    startDate: "d",
+format: "yyyy-mm-dd",
+    orientation: "top auto",
+    autoclose: true,
+    todayHighlight: true
+});
+});
+  </script>
 
     <!-- jQuery -->
  
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="booklapangan.com/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

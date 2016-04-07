@@ -25,7 +25,9 @@ $to      = 'hlmn.hg@gmail.com';
         return view('babi');
 });
 
-
+Route::get('tes', function () {
+	return view('tes');
+});
 Route::get('/cari', 'FindController@CariFasor');
 Route::get('/', 'FindController@Index');
 Route::get('/showlap/{id_fasor}/{tgl}/{start}/{end}/{lapangan}', 'FindController@ShowLap');

@@ -26,7 +26,7 @@ class FindController extends Controller
         $time       = date("H:i:s");        
         if ($request->tgl == $date ){
         $date       = date("Y-m-d");
-    
+    echo
 
         $validator = Validator::make($request->all(), [
             'tgl' => "required|date_format:Y-m-d",
@@ -49,7 +49,7 @@ class FindController extends Controller
     
 
         }
-
+         else {  
         $validator = Validator::make($request->all(), [
             'tgl' => 'required|date_format:Y-m-d|after:today',
             'start' =>  "required|date_format:H:i:s",
@@ -68,7 +68,7 @@ class FindController extends Controller
             return redirect('/')
                         ->withErrors($validator)
                         ->withInput();
-        }
+        }}
     
         $tgl = $request->input('tgl');
         $kota = $request->input('kota');
