@@ -29,8 +29,8 @@ padding-right: 15px;
     <!-- Custom CSS -->
     {{ Html::style('css/bootstrap.min.css') }}
             {{ Html::style('datepicker/css/datepicker.css') }}
-            
-    <link href="css/modern-business.css" rel="stylesheet">
+            {{ Html::style('css/modern-business.css') }}
+    
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -66,8 +66,24 @@ padding-right: 15px;
                         <li><a href="{{ url('/signin') }}">Login</a></li>
                         <li><a href="{{ url('/signup') }}">Register</a></li>
                     @else
-                                         <li><a href="/upload">HELLO! {{Auth::user()->email}}</a></li>
-                     <li><a href="/logout">Logout</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="upload">Tambah Fasor</a>
+                            </li>
+                            <li>
+                                <a href="/tai">Sidebar Page</a>
+                            </li>
+                            <li>
+                    <a href="/tai">FAQ</a>
+                    </li>
+                    <li>
+                    <a href="tai">404</a>
+                    </li>
+                    </ul>
+                    </li>    
+                    <li><a href="/logout">Logout</a></li>
 
                     @endif
                     <li>
