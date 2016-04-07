@@ -70,19 +70,14 @@ padding-right: 15px;
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="upload">Tambah Fasor</a>
+                                <a href="profil">Profil</a>
                             </li>
                             <li>
-                                <a href="/tai">Sidebar Page</a>
+                                <a href="upload">Manage Fasor/a>
                             </li>
-                            <li>
-                    <a href="/tai">FAQ</a>
+
+                        </ul>
                     </li>
-                    <li>
-                    <a href="tai">404</a>
-                    </li>
-                    </ul>
-                    </li>    
                     <li><a href="/logout">Logout</a></li>
 
                     @endif
@@ -187,11 +182,11 @@ padding-right: 15px;
                             </div>
                             <div class="col-md-2">
                               <label for="ex1">Jam Mulai Bermain</label>
-                              <input type="text" class="form-control" name="start">
+                               <input type="text" class="time start" />
                             </div>
                             <div class="col-md-2">
                               <label for="ex1">Jam Selesai Bermain</label>
-                              <input type="text" class="form-control" name="end">
+                               <input type="text" class="time end" />
                             </div>                            
                             <div class="col-md-2">
                               <label for="ex1">Jenis Lapangan</label>
@@ -264,7 +259,7 @@ padding-right: 15px;
     </script>
 
 
-<script src="datepicker/js/bootstrap-datepicker.js"></script>
+<script src="booklapangan.com/datepicker/js/bootstrap-datepicker.js"></script>
 
    <script>
 var monster = {
@@ -339,9 +334,9 @@ if (!monster.get('cookieConsent')) {
   }
 }
 </script>
-    <script src="js/google-code-prettify/prettify.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="booklapangan.com/js/google-code-prettify/prettify.js"></script>
+    <script src="booklapangan.com/js/jquery.js"></script>
+    <script src="booklapangan.com/js/bootstrap-datepicker.js"></script>
   <script>
   if (top.location != location) {
     top.location.href = document.location.href ;
@@ -409,12 +404,29 @@ if (!monster.get('cookieConsent')) {
         }).data('datepicker');
     });
   </script>
+  <script type="booklapangan.com/text/javascript" src="datepair.js"></script>
+<script type="booklapangan.com/text/javascript" src="jquery.datepair.js"></script>
+<script>
+    // initialize input widgets first
+    $('#datepairExample .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+
+    $('#datepairExample .date').datepicker({
+        'format': 'yyyy-m-d',
+        'autoclose': true
+    });
+
+    // initialize datepair
+    $('#datepairExample').datepair();
+</script>
 
     <!-- jQuery -->
  
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="booklapangan.com/js/bootstrap.min.js"></script>
 </body>
 
 </html>
