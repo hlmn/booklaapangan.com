@@ -90,17 +90,29 @@ position:relative;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">BookLapangan</a>
+                <a class="navbar-brand" href="/">BookLapangan</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                                    @if (Auth::guest())
+                    @if (Auth::guest())
                         <li><a href="{{ url('/signin') }}">Login</a></li>
                         <li><a href="{{ url('/signup') }}">Register</a></li>
                     @else
-                                         <li><a href="/upload">HELLO! {{Auth::user()->email}}</a></li>
-                     <li><a href="/logout">Logout</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/profile">Profil</a>
+                            </li>
+                            <li>
+                                <a href="upload">Manage Fasor</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
 
                     @endif
                     <li>
@@ -128,28 +140,25 @@ position:relative;
             <div class="col-lg-12 text-center">
                 <h1>Masukkan Lapangan Mu!</h1>
                 <br>
-<br>
+                <br>
             </div>
         </div>
                     <div class="col-md-6">
-            <div class="form1">
-                
-                <form action="/tambahfasor" method="POST" enctype="multipart/form-data">
-
-                    <label>Nama Fasor</label>
-                    {{ Form::text('nama_fasor', null, ['class' => 'form-control']) }} 
-                    <label>Alamat</label>
-                    {{ Form::text('alamat', null, ['class' => 'form-control']) }} 
-                    <label>Nomor Telepon</label>
-                    {{ Form::text('nama_fasor', null, ['class' => 'form-control']) }} 
-                    <label>Kota</label>
-                    {{ Form::text('alamat', null, ['class' => 'form-control']) }} 
-
-
-                           
-                    <input type="submit" value="Submit" name="test">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                </form>
+                    <div class="form1">           
+                        <form action="/tambahfasor" method="POST" enctype="multipart/form-data">
+                            <label>Nama Fasor</label>
+                            {{ Form::text('nama_fasor', null, ['class' => 'form-control']) }} 
+                            <label>Alamat</label>
+                            {{ Form::text('alamat', null, ['class' => 'form-control']) }} 
+                            <label>Nomor Telepon</label>
+                            {{ Form::text('nama_fasor', null, ['class' => 'form-control']) }} 
+                            <label>Kota</label>
+                            {{ Form::text('alamat', null, ['class' => 'form-control']) }} 
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">     
+                            <br>
+                            <input type="submit" value="Submit" name="test">
+                            
+                        </form>
 
                 
 
@@ -170,7 +179,7 @@ position:relative;
                     
                 </select>
                     <label>Nama Lapangan</label>
-                    {{ Form::text('namalap', null, ['class' => 'form-control']) }} 
+                    {{ Form::text('namalap', null, ['class' => 'form-control', 'placeholder' => 'Nama Lapangan']) }} 
                     <label>Jenis Lapangan</label>
                     {{ Form::select('lapangan', $items, null, ['class' => 'form-control']) }}
                                        
@@ -187,12 +196,8 @@ position:relative;
                             </div>
                             </div><br><br><br>
                     
-                    <div class="ibab">
-                    <label>Harga/jam</label>
-                    {{ Form::text('harga', null, ['class' => 'form-control']) }} 
-                    </div>
+
                         
-                            <br><br><br>
 
                     
                     <label>Pilih foto lapangan mu:</label>
@@ -208,7 +213,35 @@ position:relative;
                 
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form1">
+                
+                <form action="/tambahlapangan" method="POST" enctype="multipart/form-data">
+                    <label>Fasor:</label>
+                <select class="form-control" name="fasor" id="fasor">
+                 <option selected disabled>pilih fasor</option>
+                    @foreach ($fasors as $fasor)
+                        <option value="{{$fasor->ID_FASOR}}">{{$fasor->NAMA_FASOR}}</option>
+                    @endforeach
+                    
+                </select>
+                <label>Lapangan</label>
+                {{ Form::select('lapangan', array(), null, array('id' => 'lapangan', 'class' => 'form-control','placeholder' => 'Pilih Lapangan'))  }}
 
+                                       
+                <br>
+                <input type="submit" value="Submit" name="submit">
+                <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+
+                </form>
+
+                
+
+                
+
+                
+            </div>
+        </div>  
 
     </div>
         <!-- /.row -->
@@ -216,9 +249,37 @@ position:relative;
     </div>
     <!-- /.container -->
 
+
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
+<script type="text/javascript">
 
+$(document).ready(function() {
+        $('#fasor').on('change',function(){
+        $.post('dropdown', {_token: "{{ csrf_token() }}",type: 'slapangan', id: $('#fasor').val()}, function(e){
+            $('#lapangan').html(e);
+        });
+        //$('#sKecamatan').html('');
+     });
+//              var formData = {
+//             'id'              : $('input[name=fasor]').val(),
+            
+//         };
+// $('#fasor').on('change',function(){
+//     $.ajax({
+//     type: "POST",
+//     url: "http://localhost/dropdown",
+//     data: formData,
+//     success: function(e) {
+
+//       $('#lapangan').html(e);
+
+//     }
+//   });
+// });
+});
+        //$('#sKelurahan').html('');
+  </script>  
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -63,22 +63,35 @@ padding-right: 15px;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="/">Start Bootstrap</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                               <ul class="nav navbar-nav navbar-right">
-                                    @if (Auth::guest())
+                    @if (Auth::guest())
                         <li><a href="{{ url('/signin') }}">Login</a></li>
                         <li><a href="{{ url('/signup') }}">Register</a></li>
                     @else
-                                         <li><a href="/upload">HELLO! {{Auth::user()->email}}</a></li>
-                     <li><a href="/logout">Logout</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/profile">Profil</a>
+                            </li>
+                            <li>
+                                <a href="upload">Manage Fasor</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
 
                     @endif
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
+
 
                     
                 </ul>

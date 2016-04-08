@@ -26,7 +26,7 @@ class FindController extends Controller
         $time       = date("H:i:s");        
         if ($request->tgl == $date ){
        //$date       = date("Y-m-d");
-    echo $date;
+ 
 
         $validator = Validator::make($request->all(), [
             'tgl' => "required|date_format:Y-m-d",
@@ -107,7 +107,7 @@ class FindController extends Controller
     {   
         
         date_default_timezone_set('Asia/Jakarta');
-        setlocale(LC_ALL, 'id_ID.UTF-8','id_ID');
+        setlocale(LC_ALL, 'id_ID.UTF-8','id_ID','Indonesian');
         //setlocale(LC_TIME,'fr_FR');
         $hari= strftime("%A",strtotime("$tgl"));
         //setlocale(LC_TIME,'id_ID');

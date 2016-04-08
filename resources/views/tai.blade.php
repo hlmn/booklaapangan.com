@@ -57,7 +57,7 @@ padding-right: 15px;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">BookLapangan</a>
+                <a class="navbar-brand" href="/">BookLapangan</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -70,7 +70,7 @@ padding-right: 15px;
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="profil">Profil</a>
+                                <a href="/profile">Profil</a>
                             </li>
                             <li>
                                 <a href="upload">Manage Fasor</a>
@@ -314,26 +314,17 @@ padding-right: 15px;
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
 
-<script>
-$('#timeOnlyExample .time').timepicker({
-    'showDuration': true,
-    'timeFormat': 'g:ia'
-});
 
-var timeOnlyExampleEl = document.getElementById('timeOnlyExample');
-var timeOnlyDatepair = new Datepair(timeOnlyExampleEl);
-
-</script>
 
   <script>
 $(function(){
     $('#tai').datepicker({
-    startDate: "d",
-format: "yyyy-mm-dd",
-    orientation: "top auto",
-    autoclose: true,
-    todayHighlight: true
-});
+      startDate: "d",
+      format: "yyyy-mm-dd",
+      orientation: "top auto",
+      autoclose: true,
+      todayHighlight: true
+    });
 });
   </script>
 

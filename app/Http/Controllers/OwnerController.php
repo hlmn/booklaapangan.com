@@ -40,6 +40,22 @@ class OwnerController extends Controller
         $a=1;    
         
     }
+        public function DropdownLapangan()
+    {  
+
+
+        switch(Input::get('type')):
+            case 'slapangan':
+                $lapangan= \App\lapangan::where('ID_FASOR', Input::get('id'))->get();
+                $return = '`<option selected disabled>Pilih Lapangan</option>';
+                foreach( $lapangan as $row) 
+                    $return .= "<option value='$row->ID_LAP'>$row->NAMA_LAP</option>";
+                return $return;
+            break;
+          
+        endswitch;
+        
+    }
     public function Tambah(Request $request)
     {      
 

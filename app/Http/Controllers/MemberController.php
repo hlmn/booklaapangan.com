@@ -26,7 +26,7 @@ class MemberController extends Controller
     	return view('signin');
     }
 
-        public function Logout()
+    public function Logout()
     {   
         Auth::logout();
         redirect ('/home');
@@ -64,6 +64,38 @@ class MemberController extends Controller
 	}
 	echo "gagal";
  
-} 
+    } 
+
+    public function EditProfile(Request $request){
+
+        if (Auth::check())
+        {
+            return view('editprofil');
+        }
+        return "login dulu mas";
+ 
+    } 
+
+    public function ChangeName(Request $request){
+
+        $user = \App\User::find(Auth::user()->id);
+        $user->name         = $request->nama;
+        $user->save();
+        return redirect('profile')->with('status', 'Profile updated!');
+    } 
+    public function ChangeHandphone(Request $request){
+
+        $user = \App\User::find(Auth::user()->id);
+        $user->handphone         = $request->handphone;
+        $user->save();
+        return redirect('profile')->with('status', 'Profile updated!');
+    } 
+    public function ChangeEmail(Request $request){
+
+        $user = \App\User::find(Auth::user()->id);
+        $user->email         = $request->email;
+        $user->save();
+        return redirect('profile')->with('status', 'Profile updated!');
+    } 
 }
  

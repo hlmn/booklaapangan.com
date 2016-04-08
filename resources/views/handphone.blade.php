@@ -1,0 +1,3 @@
+                    <strong>Handphone Lama : </strong>{{Auth::user()->name}}<form action="changehp" method="POST"><label>Masukkan Handphone Baru</label><input type="text" class="form-control" style="width: 50%" name="handphone" placeholder="No. Handphone"></input><br><input type="hidden" name="_token" value="{{csrf_token()}}"><input type="submit" value="Submit" name="test"  style="float: left;" class="btn btn-primary"> </form>   <br><br>
+
+                   
