@@ -249,7 +249,7 @@ position:relative;
 $(document).ready(function(){
     $("#tot").hide();
     $("#hp").hide();
-     $("#name").hide();
+    $("#name").hide();
     $("#email").click(function(){
         $("#tot").show();
         $("#hp").hide();

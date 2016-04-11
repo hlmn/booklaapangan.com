@@ -216,20 +216,24 @@ position:relative;
         <div class="col-md-6">
             <div class="form1">
                 
-                <form action="/tambahlapangan" method="POST" enctype="multipart/form-data">
+                <form action="/hargalapangan" method="POST" enctype="multipart/form-data">
                     <label>Fasor:</label>
                 <select class="form-control" name="fasor" id="fasor">
-                 <option selected disabled>pilih fasor</option>
+                    <option selected disabled>Pilih Fasor</option>
                     @foreach ($fasors as $fasor)
                         <option value="{{$fasor->ID_FASOR}}">{{$fasor->NAMA_FASOR}}</option>
                     @endforeach
                     
-                </select>
-                <label>Lapangan</label>
-                {{ Form::select('lapangan', array(), null, array('id' => 'lapangan', 'class' => 'form-control','placeholder' => 'Pilih Lapangan'))  }}
-
-                                       
+                 </select>
+                 <label>Nama Harga</label>
+                 <input type="text" name="namaharga" class="form-control">
+                 <div class="ibab">
+                 <label>Harga</label>
+                 <input type="text" name="harga" class="form-control"> 
+                 </div>                   
                 <br>
+                <br>
+                <br><br>
                 <input type="submit" value="Submit" name="submit">
                 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
 
@@ -252,7 +256,7 @@ position:relative;
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
 
 $(document).ready(function() {
         $('#fasor').on('change',function(){
@@ -279,7 +283,7 @@ $(document).ready(function() {
 // });
 });
         //$('#sKelurahan').html('');
-  </script>  
+  </script> --> 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

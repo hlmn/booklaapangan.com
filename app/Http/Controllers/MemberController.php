@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
 use Hash;
+use Mail;
 
 use Illuminate\Support\Facades\Session;
 
@@ -52,6 +53,15 @@ class MemberController extends Controller
         	
         	$test->password 	= bcrypt($request->input('password'));
         	$test->save();
+            $email=$request->email;
+            $user=$request->Nama;
+
+            Mail::send('babi', ['user' => $user, 'email' => $email], function ($m) use ($user, $email) {
+            $m->from('Admin@booklapangan.com', 'Booklapangan');
+
+            $m->to($email, $user)->subject('cie daftar');
+        });
+
               return redirect('/')->with('status', 'Profile updated!');
        }
     }
