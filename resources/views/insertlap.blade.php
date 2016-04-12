@@ -220,7 +220,7 @@ position:relative;
                 
                 <form action="/hargalapangan" method="POST" enctype="multipart/form-data">
                     <label>Fasor:</label>
-                <select class="form-control" name="fasor" id="fasor">
+                <select class="form-control" name="fasor">
                     <option selected disabled>Pilih Fasor</option>
                     @foreach ($fasors as $fasor)
                         <option value="{{$fasor->ID_FASOR}}">{{$fasor->NAMA_FASOR}}</option>
@@ -263,7 +263,7 @@ position:relative;
                 </select>
 
                  <label>lapangan:</label>
-                {{ Form::select('kabupaten', array(), null, array('id' => 'lapangan', 'class'=>'form-control'))  }} 
+                {{ Form::select('lapangan', array(), null, array('id' => 'lapangan', 'class'=>'form-control'))  }} 
 
                  <label>Pilih Hari:</label>
 <br><br>
@@ -298,7 +298,7 @@ position:relative;
 
 
     <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
