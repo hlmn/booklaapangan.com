@@ -117,7 +117,8 @@ padding-bottom: 40px;
                 {{ Form::text('email', null, ['class' => 'form-control','id' => 'dp1']) }}
                 <label for="ex1">Password</label>
                  <input type="password" name="password" class="form-control">
- 
+  
+
                 <br>
                 <div class="test">
                 {{Form::submit('Kuy !',['class' => 'btn btn-primary',])}}

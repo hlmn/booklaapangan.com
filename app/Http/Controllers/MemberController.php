@@ -37,7 +37,7 @@ class MemberController extends Controller
 		$validator = Validator::make($request->all(), [
     		'Nama' => 'required',
     		'email' => 'required|email|unique:users',
-    		'password' => 'required',
+    		'password' => 'required|confirmed',
         ]);
 		if ($validator->fails()) {
             return redirect('signup')

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Input;
 use DB;
+use App\hari;
 
 class OwnerController extends Controller
 {
@@ -30,8 +31,10 @@ class OwnerController extends Controller
         //;
         //echo $test;
         $j="0";
-       $items = \App\jenislap::pluck('NAMA_JENIS_LAP','NAMA_JENIS_LAP');
-       return view('insertlap',['items' => $items,'fasors' => $terpakai]);
+        $hari = \App\hari::all();
+        $items = \App\jenislap::pluck('NAMA_JENIS_LAP','NAMA_JENIS_LAP');
+
+       return view('insertlap',['items' => $items,'fasors' => $terpakai, 'hari' => $hari]);
     	
     }
 
@@ -73,7 +76,7 @@ class OwnerController extends Controller
     
 
 
-        $source     =  
+         
         $submit                 = new lapangan;
         $submit->ID_LAP         = $max;
         $submit->NAMA_LAP       = $request->namalap;

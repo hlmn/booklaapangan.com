@@ -60,6 +60,8 @@ position:relative;
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+
     <!-- Custom CSS -->
     <style>
     body {
@@ -247,6 +249,47 @@ position:relative;
             </div>
         </div>  
 
+        <div class="col-md-6">
+            <div class="form1">
+                
+                <form action="/hargalapangan" method="POST" enctype="multipart/form-data">
+                    <label>Fasor:</label>
+                <select class="form-control" name="fasor" id="fasor">
+                    <option selected disabled>Pilih Fasor</option>
+                    @foreach ($fasors as $fasor)
+                        <option value="{{$fasor->ID_FASOR}}">{{$fasor->NAMA_FASOR}}</option>
+                    @endforeach
+                    
+                </select>
+
+                 <label>lapangan:</label>
+                {{ Form::select('kabupaten', array(), null, array('id' => 'lapangan', 'class'=>'form-control'))  }} 
+
+                 <label>Pilih Hari:</label>
+<br><br>
+                 <select id="example-getting-started" multiple="multiple">
+                    @foreach ($hari as $day)
+                    <option value="{{$day->id_hari}}">{{$day->nama_hari}}</option>
+                    @endforeach
+                 </select>
+          
+                <br>
+                <br>
+                <br><br>
+                <input type="submit" value="Submit" name="submit">
+                <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+
+                </form>
+
+                
+
+                
+
+                
+            </div>
+        </div>  
+
+
     </div>
         <!-- /.row -->
 
@@ -256,34 +299,29 @@ position:relative;
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 
 $(document).ready(function() {
         $('#fasor').on('change',function(){
         $.post('dropdown', {_token: "{{ csrf_token() }}",type: 'slapangan', id: $('#fasor').val()}, function(e){
             $('#lapangan').html(e);
         });
-        //$('#sKecamatan').html('');
      });
-//              var formData = {
-//             'id'              : $('input[name=fasor]').val(),
-            
-//         };
-// $('#fasor').on('change',function(){
-//     $.ajax({
-//     type: "POST",
-//     url: "http://localhost/dropdown",
-//     data: formData,
-//     success: function(e) {
 
-//       $('#lapangan').html(e);
-
-//     }
-//   });
-// });
 });
-        //$('#sKelurahan').html('');
-  </script> --> 
+
+</script>
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#example-getting-started').multiselect({
+            includeSelectAllOption: true,
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+             nonSelectedText: 'Pilih Hari'
+        });
+    });
+</script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -120,6 +120,8 @@ padding-bottom: 40px;
                 <label for="ex1">Password</label>
                
                <input type="password" name="password" class="form-control">
+                               <label for="ex1">Password Confirmation</label>
+                 <input type="password" name="password_confirmation " class="form-control">
                 <br>
                 <div class="test">
                 {{Form::submit('Kuy !',['class' => 'btn btn-primary',])}}
